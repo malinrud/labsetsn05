@@ -7,11 +7,16 @@ base.mainController = (function() {
         'foo': {
             partial: 'foo/foo.html',
             controller: base.fooController
+        },     
+        'hello': {
+            partial: 'hello/hello.html',
+            controller: base.helloController
         },
         'admin': {
             partial: 'admin/user-admin.html',
             controller: base.userAdminController
         }
+
     };
 
     const model = {
