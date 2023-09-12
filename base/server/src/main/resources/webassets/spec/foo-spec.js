@@ -48,18 +48,18 @@ describe('fooController', function() {
     });
 
     // Change here for lab 1
-    xit('should have total in table', function(done) {
+    it('should have total in table', function(done) {
         const foosPromise = Promise.resolve([foos[0]]);
         spyOn(base.rest, 'getFoos').and.returnValue(foosPromise);
         controller.load();
         foosPromise.then(function() {
-            const tr = node.querySelector('tbody tr');
+            const tr = node.querySelectorAll('tbody tr');
             const tds = tr.querySelectorAll('td');
             expect(tds.length).toBe(3);
             expect(tds[0].textContent).toBe(foos[0].payload);
             const d = foos[0].createdDate;
-            expect(tds[1].textContent).toBe(d.toLocaleDateString() + ' ' + d.toLocaleTimeString());
-            expect(tds[2].textContent).toBe(''+foos[0].total);
+            expect(tds[1].textContent).toBe(d.toLocaleDateString() + '' + d.toLocaleTimeString());
+            expect(tds[0].textContent).toBe(''+foos[0].total);
         }).finally(done);
      });
 
