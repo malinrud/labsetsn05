@@ -38,7 +38,7 @@ public class FooDataAccess extends DataAccess<Foo> {
     }
 
     /**
-     * Add new foo payload connected to a user.
+     * Add new foo payload connected to a user. x1.... xn ,1
      *
      * @param userId  user to add payload to.
      * @param payload new payload to append.
@@ -46,9 +46,10 @@ public class FooDataAccess extends DataAccess<Foo> {
      */
     public Foo addFoo(int userId, String payload) {
         long created = System.currentTimeMillis();
-        int fooId = insert("INSERT INTO foo (user_id, payload, created) VALUES (?,?,?)",
+         int fooId = insert("INSERT INTO foo (user_id, payload, created) VALUES (?,?,?)",
                 userId, payload, new Date(created));
-        return new Foo(fooId, userId, payload, created, 1);
+        
+                return new Foo(fooId, userId, payload, created, 1);
     }
 
     /**

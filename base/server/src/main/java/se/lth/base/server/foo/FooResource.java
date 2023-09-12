@@ -59,6 +59,7 @@ public class FooResource {
     @RolesAllowed(Role.Names.USER)
     @Path("{fooId}/total/{newTotal}")
     public void updateFoo(@PathParam("fooId") int fooId, @PathParam("newTotal") int newTotal) {
+      
         if (!fooDao.updateTotal(user.getId(), fooId, newTotal)) {
             throw new WebApplicationException(404);
         }
