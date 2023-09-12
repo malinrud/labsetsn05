@@ -67,4 +67,28 @@ public class FooDataAccess extends DataAccess<Foo> {
     public List<Foo> getUsersFoo(int userId) {
         return query("SELECT * FROM foo WHERE user_id = ?", userId);
     }
+    
+    /**
+     * Delete a users foo row.
+     *
+     * @param userId user to match.
+     * @param fooId primary key of the foo.
+     * @return true if a row was deleted.
+     */
+    public boolean deleteFoo(int userId, int fooId) {
+        return execute("DELETE FROM foo WHERE user_id = ? AND foo_id = ?", userId, fooId) > 0;
+    }
+
+    /**
+     * Update the total column of a foo.
+     *
+     * @param userId user to match.
+     * @param fooId primary key of the foo.
+     * @param newTotal value to set the column to.
+     * @return true if a row was updated.
+     */
+    public boolean updateTotal(int userId, int fooId, int newTotal) {
+        return execute("UPDATE foo SET total = ? WHERE user_id = ? AND foo_id = ?", newTotal, userId, fooId) > 0;
+    }
+
 }
