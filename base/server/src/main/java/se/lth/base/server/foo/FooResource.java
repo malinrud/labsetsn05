@@ -69,7 +69,7 @@ public class FooResource {
     // DELETE /rest/foo/4
     @DELETE
     @RolesAllowed(Role.Names.USER)
-    @Path("fooId")// TODO: please add @Path annotation
+    @Path("{fooId}")// TODO: please add @Path annotation
     public void deleteFoo(@PathParam("fooId") int fooId) { /* TODO: please add @PathParam annotation for the fooId */
         fooDao.deleteFoo(user.getId(), fooId);// TODO: please call the correct method in fooDao
     }
