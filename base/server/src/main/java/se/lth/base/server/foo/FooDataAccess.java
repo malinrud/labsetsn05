@@ -28,7 +28,8 @@ public class FooDataAccess extends DataAccess<Foo> {
             return new Foo(resultSet.getInt("foo_id"),
                     resultSet.getInt("user_id"),
                     resultSet.getString("payload"),
-                    resultSet.getObject("created", Date.class).getTime());
+                    resultSet.getObject("created", Date.class).getTime(), 
+                    resultSet.getInt("total"));
         }
     }
 
@@ -47,7 +48,7 @@ public class FooDataAccess extends DataAccess<Foo> {
         long created = System.currentTimeMillis();
         int fooId = insert("INSERT INTO foo (user_id, payload, created) VALUES (?,?,?)",
                 userId, payload, new Date(created));
-        return new Foo(fooId, userId, payload, created);
+        return new Foo(fooId, userId, payload, created, 1);
     }
 
     /**
